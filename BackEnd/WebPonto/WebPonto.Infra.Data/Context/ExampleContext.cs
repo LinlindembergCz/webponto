@@ -6,20 +6,21 @@ namespace WebPonto.Infra.Data.Context
 {
     public class ExampleContext : DbContext
     {
-        public static bool firstRun = true;
+        //public static bool firstRun = true;
 
         public ExampleContext(DbContextOptions<ExampleContext> options) : base(options)
         {
-            Database.Migrate();
+            //Database.EnsureDeleted();
+            //Database.EnsureCreated();
+            ///Database.Migrate();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetAssembly(typeof(ExampleContext)));
+            modelBuilder.ApplyConfigurationsFromAssembly(
+                Assembly.GetAssembly(typeof(ExampleContext)));
         }
 
         public DbSet<Person> Person { get; set; }
-        public DbSet<PersonPhone> PersonPhone { get; set; }
-        public DbSet<PhoneNumberType> PhoneNumberType { get; set; }
     }
 }

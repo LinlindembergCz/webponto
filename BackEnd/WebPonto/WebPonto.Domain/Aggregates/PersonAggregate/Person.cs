@@ -9,12 +9,7 @@ namespace WebPonto.Domain.Aggregates.PersonAggregate
 
     public partial class Person 
     {
-        public int BusinessEntityID { get; set; }
-
-        public string Name { get; set; }
-
-        public ICollection<PersonPhone> Phones { get; set; }
-
-        public ICollection<IEventData> DomainEvents => throw new NotImplementedException();
+        public Guid Id { get; set; }
+        public string Nome { get; set; }
     }
 }

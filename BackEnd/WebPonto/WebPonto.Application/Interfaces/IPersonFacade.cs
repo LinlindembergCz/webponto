@@ -2,6 +2,7 @@
 using WebPonto.Application.Messages.Request;
 using WebPonto.Application.Messages.Response;
 using System.Threading.Tasks;
+using System;
 
 namespace WebPonto.Application.Interfaces
 {
@@ -10,12 +11,12 @@ namespace WebPonto.Application.Interfaces
 
         Task<PersonResponse> FindAllAsync();
 
-        PersonDto FindById(int id);
+        PersonDto FindById(Guid id);
 
         void CreateRequest(PersonRequest entity);
 
         void ModifyRequest(PersonRequest entity);
 
-        void Delete(int id);
+        void Delete(Guid id);
     }
 }

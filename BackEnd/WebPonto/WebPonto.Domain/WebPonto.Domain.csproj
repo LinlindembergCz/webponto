@@ -5,12 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Aggregates\ExampleAggregate\**" />
-    <EmbeddedResource Remove="Aggregates\ExampleAggregate\**" />
-    <None Remove="Aggregates\ExampleAggregate\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Abp" Version="5.0.0" />
   </ItemGroup>
 

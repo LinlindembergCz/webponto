@@ -16,4 +16,8 @@
     <ProjectReference Include="..\WebPonto.Infra.Data\WebPonto.Infra.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

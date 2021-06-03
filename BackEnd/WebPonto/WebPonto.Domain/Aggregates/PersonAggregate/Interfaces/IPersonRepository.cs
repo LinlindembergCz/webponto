@@ -7,16 +7,14 @@ namespace WebPonto.Domain.Aggregates.PersonAggregate.Interfaces
 { 
     public interface IPersonRepository
     {
-        //Task<IEnumerable<PersonAggregate.Person>> FindAllAsync();
-
         Task<ICollection<Person>> FindAllAsync();
 
-        PersonAggregate.Person FindById(int id);
+        PersonAggregate.Person FindById(Guid id);
 
         void Create(Person entity);
 
         void Modify(Person entity);
 
-        void Delete(int id);
+        void Delete(Guid id);
     }
 }

@@ -24,7 +24,7 @@ namespace WebPonto.API.Controllers
         public async Task<ActionResult<PersonResponse>> Get() =>await _facade.FindAllAsync();
   
         [HttpGet("{id}")]
-        public ActionResult<PersonDto> Get(int id)
+        public ActionResult<PersonDto> Get(Guid id)
         {
            var p = _facade.FindById(id);
            return Ok( p ); 
@@ -59,7 +59,7 @@ namespace WebPonto.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(Guid id)
         {
             try
             {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System;
 
 namespace WebPonto.Domain.Aggregates.PersonAggregate
 {
@@ -16,7 +17,7 @@ namespace WebPonto.Domain.Aggregates.PersonAggregate
 
         public async Task<List<Person>> FindAllAsync() => (await _personRepository.FindAllAsync()).ToList();
 
-        public  Person FindById(int id) => ( _personRepository.FindById(id));
+        public  Person FindById(Guid id) => ( _personRepository.FindById(id));
 
         public void Create(Person entity)
         {
@@ -28,7 +29,7 @@ namespace WebPonto.Domain.Aggregates.PersonAggregate
             _personRepository.Modify(entity);
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             _personRepository.Delete(id);
         }

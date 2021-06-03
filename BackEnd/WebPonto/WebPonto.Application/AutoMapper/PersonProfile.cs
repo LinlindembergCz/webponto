@@ -11,8 +11,8 @@ namespace WebPonto.Application.AutoMapper
         {
             CreateMap<Person, PersonDto>()
                .ReverseMap()
-               .ForMember(dest => dest.BusinessEntityID,  opt => opt.MapFrom(src => src.BusinessEntityID))
-               .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+               .ForMember(dest => dest.Id,  opt => opt.MapFrom(src => src.Id))
+               .ForMember(dest => dest.Nome, opt => opt.MapFrom(src => src.Nome));
         }
     }
 }

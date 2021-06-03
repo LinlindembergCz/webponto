@@ -8,15 +8,18 @@ namespace WebPonto.Infra.Data.Configuration
     {
         public void Configure(EntityTypeBuilder<Person> builder)
         {
-            builder.Ignore(b => b.DomainEvents);
+          //  builder.Ignore(b => b.DomainEvents);
 
-            builder.ToTable("Person", "dbo").HasKey(t => t.BusinessEntityID);
+            builder.ToTable("Person", "dbo").HasKey(t => t.Id);
 
-            builder.Property(t => t.BusinessEntityID).HasColumnName("BusinessEntityID").IsRequired(true);
-            builder.Property(t => t.Name).HasColumnName("Name").IsRequired(true);
-            builder.HasMany(t => t.Phones).WithOne(t => t.Person);
+            builder.Property(t => t.Id).
+                HasColumnName("Id").
+                IsRequired(true).
+                HasDefaultValueSql("NEWID()");
 
-            builder.HasData(new Person { BusinessEntityID = 1, Name = "User One" });
+            builder.Property(t => t.Nome).HasColumnName("Nome").IsRequired(true);
+            
+            //builder.HasData(new Person { Id = new System.Guid(), Nome = "User One" });
         }
     }
 }

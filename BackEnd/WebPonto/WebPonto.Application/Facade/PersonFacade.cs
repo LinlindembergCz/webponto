@@ -8,6 +8,7 @@ using WebPonto.Domain.Aggregates.PersonAggregate.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System;
 
 namespace WebPonto.Application.Facade
 {
@@ -31,7 +32,7 @@ namespace WebPonto.Application.Facade
             return response;
         }
 
-        public PersonDto FindById(int id)
+        public PersonDto FindById(Guid id)
         {
             var result = _personService.FindById(id);
             var response = new PersonDto();
@@ -51,7 +52,7 @@ namespace WebPonto.Application.Facade
             _personService.Modify(entityMappered);
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {           
             _personService.Delete(id);
         }

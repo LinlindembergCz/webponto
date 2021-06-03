@@ -9,12 +9,12 @@ namespace WebPonto.Domain.Aggregates.PersonAggregate.Interfaces
     {
         Task<List<Person>> FindAllAsync();
 
-        Person FindById(int id);
+        Person FindById(Guid id);
 
         void Create(Person entity);
 
         void Modify(Person entity);
 
-        void Delete(int id);
+        void Delete(Guid id);
     }
 }

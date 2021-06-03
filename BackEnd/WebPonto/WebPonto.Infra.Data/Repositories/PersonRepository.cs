@@ -23,9 +23,9 @@ namespace WebPonto.Infra.Data.Repositories
 
         //await Task.Run(() => _context.Person);
 
-        public Person FindById(int id)
+        public Person FindById(Guid id)
         {
-            return _context.Person.First(p => p.BusinessEntityID == id);                
+            return _context.Person.First(p => p.Id == id);                
         }
 
         public void Create(Person entity)
@@ -39,9 +39,9 @@ namespace WebPonto.Infra.Data.Repositories
             _context.Person.Update(entity);
             _context.SaveChanges();
         }
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
-            Person entity = _context.Person.First(p => p.BusinessEntityID == id);
+            Person entity = _context.Person.First(p => p.Id == id);
             _context.Person.Remove(entity);
             _context.SaveChanges();
         }

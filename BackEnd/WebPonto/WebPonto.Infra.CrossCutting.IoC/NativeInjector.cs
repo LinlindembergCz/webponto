@@ -23,12 +23,6 @@ namespace WebPonto.Infra.CrossCutting.IoC
             services.AddScoped<IPersonFacade, PersonFacade>();
             services.AddScoped<IPersonService, PersonService>();
             services.AddScoped<IPersonRepository, PersonRepository>();
-
-            services.AddScoped<IPersonPhoneService, PersonPhoneService>();
-            services.AddScoped<IPersonPhoneRepository, PersonPhoneRepository>();
-            
-            services.AddScoped<IPhoneNumberTypeService, PhoneNumberTypeService>();
-            services.AddScoped<IPhoneNumberTypeRepository, PhoneNumberTypeRepository>();
         }
 
         private static void RegisterAutoMapper(IServiceCollection services)
