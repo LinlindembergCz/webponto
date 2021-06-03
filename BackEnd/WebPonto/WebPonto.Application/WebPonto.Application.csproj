@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="AutoMapper\ExampleProfile.cs" />
+    <Compile Remove="Dtos\ExampleDto.cs" />
+    <Compile Remove="Facade\ExampleFacade.cs" />
+    <Compile Remove="Interfaces\IExampleFacade.cs" />
+    <Compile Remove="Messages\Request\ExampleRequest.cs" />
+    <Compile Remove="Messages\Response\ExampleListResponse.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebPonto.Domain\WebPonto.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
