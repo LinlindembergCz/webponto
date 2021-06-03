@@ -1,8 +1,10 @@
-﻿namespace WebPonto.Application.Messages.Request
+﻿using System;
+
+namespace WebPonto.Application.Messages.Request
 {
     public class PersonRequest
     {
-        public int Id { get; set; }
+        public Guid id { get; set; }
         public string Nome { get; set; }
     }
 }
