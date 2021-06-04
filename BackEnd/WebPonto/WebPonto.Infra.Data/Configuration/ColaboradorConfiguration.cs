@@ -1,16 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using WebPonto.Domain.Aggregates.PersonAggregate;
+using WebPonto.Domain.Aggregates.ColaboradorAggregate;
 
 namespace WebPonto.Infra.Data.Configuration
 {
-    public class PersonConfiguration : IEntityTypeConfiguration<Person>
+    public class ColaboradorConfiguration : IEntityTypeConfiguration<Colaborador>
     {
-        public void Configure(EntityTypeBuilder<Person> builder)
+        public void Configure(EntityTypeBuilder<Colaborador> builder)
         {
           //  builder.Ignore(b => b.DomainEvents);
 
-            builder.ToTable("Person", "dbo").HasKey(t => t.Id);
+            builder.ToTable("Colaborador", "dbo").HasKey(t => t.Id);
 
             builder.Property(t => t.Id).
                 HasColumnName("Id").
@@ -19,7 +19,6 @@ namespace WebPonto.Infra.Data.Configuration
 
             builder.Property(t => t.Nome).HasColumnName("Nome").IsRequired(true);
             
-            //builder.HasData(new Person { Id = new System.Guid(), Nome = "User One" });
         }
     }
 }

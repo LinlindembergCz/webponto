@@ -14,7 +14,7 @@ namespace WebPonto.Application.MappinConfig
 
             services.AddAutoMapper( typeof(DomaninToCommandRequest),  typeof(CommandRequestToDomanin) );
 
-
+            services.AddAutoMapper(typeof(DomaninToCommandResponse), typeof(CommandResponseToDomanin));
         }
 
     }

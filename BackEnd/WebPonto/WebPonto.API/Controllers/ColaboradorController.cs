@@ -1,37 +1,37 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using WebPonto.Application.Interfaces;
-using WebPonto.Application.Messages.Request;
-using WebPonto.Application.Messages.Response;
 using System.Threading.Tasks;
-using WebPonto.Application.Dtos;
 using System;
+using WebPonto.Application.Commands.Response;
+using WebPonto.Application.Commands.Request;
+using System.Collections.Generic;
 
 namespace WebPonto.API.Controllers
 {
-    [Route("person")]
+    [Route("colaborador")]
     [ApiController]
-    public class PersonController : BaseController
+    public class ColaboradorController : BaseController
     {
-        private IPersonFacade _facade;
+        private IColaboradorFacade _facade;
 
-        public PersonController(IPersonFacade facade, IMapper mapper)
+        public ColaboradorController(IColaboradorFacade facade, IMapper mapper)
         {
             _facade = facade;
         }
 
         [HttpGet]
-        public async Task<ActionResult<PersonResponse>> Get() =>await _facade.FindAllAsync();
+        public async Task<ActionResult<List<ColaboradorResponse>>> Get() =>await _facade.FindAllAsync();
   
         [HttpGet("{id}")]
-        public ActionResult<PersonDto> Get(Guid id)
+        public ActionResult<ColaboradorResponse> Get(Guid id)
         {
            var p = _facade.FindById(id);
            return Ok( p ); 
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] PersonRequest request)
+        public IActionResult Post([FromBody] ColaboradorRequest request)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace WebPonto.API.Controllers
         }
 
         [HttpPut]
-        public IActionResult Put([FromBody] PersonRequest request)
+        public IActionResult Put([FromBody] ColaboradorRequest request)
         {
             try
             {

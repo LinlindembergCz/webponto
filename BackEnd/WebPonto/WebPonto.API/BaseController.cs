@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using WebPonto.Application.Common.Messages;
+using WebPonto.Application.Common.Response;
 
 namespace WebPonto.API
 {

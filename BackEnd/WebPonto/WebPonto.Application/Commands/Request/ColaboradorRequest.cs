@@ -1,8 +1,9 @@
 ﻿using System;
 
-namespace WebPonto.Application.Messages.Request
+namespace WebPonto.Application.Commands.Request
+
 {
-    public class PersonRequest
+    public class ColaboradorRequest
     {
         public Guid id { get; set; }
         public string Nome { get; set; }

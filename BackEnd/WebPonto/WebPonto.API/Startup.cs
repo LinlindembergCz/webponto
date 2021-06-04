@@ -33,6 +33,7 @@ namespace WebPonto.API
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), 
                     b => b.MigrationsAssembly("WebPonto.Infra.Data.Configuration"));
             });
+
             NativeInjector.Setup(services);
             services.AddAutoMapper();
 

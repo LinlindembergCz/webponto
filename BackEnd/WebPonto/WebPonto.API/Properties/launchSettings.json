@@ -12,21 +12,15 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "person",
+      "launchUrl": "colaborador",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Credit.API": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "person",
-      "applicationUrl": "http://localhost:5000"
-    },
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/api/example",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/colaborador",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
@@ -35,7 +29,7 @@
     "WebPonto.API": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "person",
+      "launchUrl": "colaborador",
       "applicationUrl": "http://localhost:5000"
     }
   }

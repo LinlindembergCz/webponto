@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebPonto.Domain.Aggregates.PersonAggregate;
+using WebPonto.Domain.Aggregates.ColaboradorAggregate;
 using System.Reflection;
 
 namespace WebPonto.Infra.Data.Context
@@ -11,7 +11,7 @@ namespace WebPonto.Infra.Data.Context
         public ExampleContext(DbContextOptions<ExampleContext> options) : base(options)
         {
             //Database.EnsureDeleted();
-            //Database.EnsureCreated();
+            Database.EnsureCreated();
             ///Database.Migrate();
         }
 
@@ -21,6 +21,6 @@ namespace WebPonto.Infra.Data.Context
                 Assembly.GetAssembly(typeof(ExampleContext)));
         }
 
-        public DbSet<Person> Person { get; set; }
+        public DbSet<Colaborador> Colaborador { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WebPonto.Application.Common.Messages
+namespace WebPonto.Application.Common.Response
 {
     public abstract class BaseResponse
     {

@@ -1,10 +1,6 @@
 ﻿using AutoMapper;
-using WebPonto.Application.Messages.Request;
-using WebPonto.Domain.Aggregates.PersonAggregate;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using WebPonto.Domain.Aggregates.ColaboradorAggregate;
+using WebPonto.Application.Commands.Request;
 
 namespace WebPonto.Application.Mappings
 {
@@ -13,8 +9,7 @@ namespace WebPonto.Application.Mappings
 
         public DomaninToCommandRequest()
         {
-            CreateMap< Person, PersonRequest>();
-
+            CreateMap< Colaborador, ColaboradorRequest>();
         }
     }
 }
