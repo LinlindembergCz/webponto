@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+
+  </ItemGroup>
+  
+
+  <ItemGroup>
+    <ProjectReference Include="..\PontoEletronico.Application\PontoEletronico.Application.csproj" />
+    <ProjectReference Include="..\PontoEletronico.Infra.Data\PontoEletronico.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>

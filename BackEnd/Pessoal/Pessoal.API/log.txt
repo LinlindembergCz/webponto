@@ -1,0 +1,483 @@
+warn: 05/06/2021 10:29:44.529 CoreEventId.SensitiveDataLoggingEnabledWarning[10400] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+warn: 05/06/2021 10:29:44.583 RelationalEventId.BoolWithDefaultWarning[20601] (Microsoft.EntityFrameworkCore.Model.Validation) 
+      The 'bool' property 'Ativo' on entity type 'Colaborador' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead so that the default will only be used for inserts when the property value is 'null'.
+info: 05/06/2021 10:29:44.693 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 5.0.0 initialized 'ExampleContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled CommandTimeout=5 MaxBatchSize=100 MigrationsAssembly=WebPonto.Infra.Data.Configuration 
+info: 05/06/2021 10:29:45.199 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (22ms) [Parameters=[], CommandType='Text', CommandTimeout='5']
+      SELECT 1
+info: 05/06/2021 10:29:45.263 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (53ms) [Parameters=[], CommandType='Text', CommandTimeout='5']
+      
+      IF EXISTS
+          (SELECT *
+           FROM [sys].[objects] o
+           WHERE [o].[type] = 'U'
+           AND [o].[is_ms_shipped] = 0
+           AND NOT EXISTS (SELECT *
+               FROM [sys].[extended_properties] AS [ep]
+               WHERE [ep].[major_id] = [o].[object_id]
+                   AND [ep].[minor_id] = 0
+                   AND [ep].[class] = 1
+                   AND [ep].[name] = N'microsoft_database_tools_support'
+          )
+      )
+      SELECT 1 ELSE SELECT 0
+info: 05/06/2021 10:29:45.839 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='5']
+      SELECT [c].[Id], [c].[Ativo], [c].[Matricula], [c].[Nome]
+      FROM [dbo].[Colaboradores] AS [c]
+      WHERE [c].[Ativo] = CAST(1 AS bit)
+info: 05/06/2021 10:30:23.988 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 5.0.0 initialized 'ExampleContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled CommandTimeout=5 MaxBatchSize=100 MigrationsAssembly=WebPonto.Infra.Data.Configuration 
+info: 05/06/2021 10:30:23.989 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='5']
+      SELECT 1
+info: 05/06/2021 10:30:24.014 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (24ms) [Parameters=[], CommandType='Text', CommandTimeout='5']
+      
+      IF EXISTS
+          (SELECT *
+           FROM [sys].[objects] o
+           WHERE [o].[type] = 'U'
+           AND [o].[is_ms_shipped] = 0
+           AND NOT EXISTS (SELECT *
+               FROM [sys].[extended_properties] AS [ep]
+               WHERE [ep].[major_id] = [o].[object_id]
+                   AND [ep].[minor_id] = 0
+                   AND [ep].[class] = 1
+                   AND [ep].[name] = N'microsoft_database_tools_support'
+          )
+      )
+      SELECT 1 ELSE SELECT 0
+info: 05/06/2021 10:30:24.201 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (18ms) [Parameters=[@p3='0a6a5fe4-04a9-4a2c-b005-72488229a74f', @p0='True', @p1='12345' (Nullable = false) (Size = 8), @p2='CRISTwarn: 05/06/2021 10:31:20.214 CoreEventId.SensitiveDataLoggingEnabledWarning[10400] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+warn: 05/06/2021 10:31:20.266 RelationalEventId.BoolWithDefaultWarning[20601] (Microsoft.EntityFrameworkCore.Model.Validation) 
+      The 'bool' property 'Ativo' on entity type 'Colaborador' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead so that the default will only be used for inserts when the property value is 'null'.
+info: 05/06/2021 10:31:20.361 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 5.0.0 initialized 'ExampleContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled CommandTimeout=5 MaxBatchSize=100 MigrationsAssembly=WebPonto.Infra.Data.Configuration 
+dbug: 05/06/2021 10:31:20.433 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:31:20.781 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:31:20.789 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 05/06/2021 10:31:20.795 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (4ms).
+dbug: 05/06/2021 10:31:20.801 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='5']
+      SELECT 1
+info: 05/06/2021 10:31:20.827 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (27ms) [Parameters=[], CommandType='Text', CommandTimeout='5']
+      SELECT 1
+dbug: 05/06/2021 10:31:20.830 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:31:20.836 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:31:20.839 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteScalar'.
+dbug: 05/06/2021 10:31:20.839 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteScalar' (0ms).
+dbug: 05/06/2021 10:31:20.839 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:31:20.840 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:31:20.841 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='5']
+      
+      IF EXISTS
+          (SELECT *
+           FROM [sys].[objects] o
+           WHERE [o].[type] = 'U'
+           AND [o].[is_ms_shipped] = 0
+           AND NOT EXISTS (SELECT *
+               FROM [sys].[extended_properties] AS [ep]
+               WHERE [ep].[major_id] = [o].[object_id]
+                   AND [ep].[minor_id] = 0
+                   AND [ep].[class] = 1
+                   AND [ep].[name] = N'microsoft_database_tools_support'
+          )
+      )
+      SELECT 1 ELSE SELECT 0
+info: 05/06/2021 10:31:20.876 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (35ms) [Parameters=[], CommandType='Text', CommandTimeout='5']
+      
+      IF EXISTS
+          (SELECT *
+           FROM [sys].[objects] o
+           WHERE [o].[type] = 'U'
+           AND [o].[is_ms_shipped] = 0
+           AND NOT EXISTS (SELECT *
+               FROM [sys].[extended_properties] AS [ep]
+               WHERE [ep].[major_id] = [o].[object_id]
+                   AND [ep].[minor_id] = 0
+                   AND [ep].[class] = 1
+                   AND [ep].[name] = N'microsoft_database_tools_support'
+          )
+      )
+      SELECT 1 ELSE SELECT 0
+dbug: 05/06/2021 10:31:20.876 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:31:20.877 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:31:21.163 CoreEventId.QueryCompilationStarting[10111] (Microsoft.EntityFrameworkCore.Query) 
+      Compiling query expression: 
+      'DbSet<Colaborador>()
+          .AsNoTracking()'
+dbug: 05/06/2021 10:31:21.362 CoreEventId.QueryExecutionPlanned[10107] (Microsoft.EntityFrameworkCore.Query) 
+      Generated query execution expression: 
+      'queryContext => new SingleQueryingEnumerable<Colaborador>(
+          (RelationalQueryContext)queryContext, 
+          RelationalCommandCache.SelectExpression(
+              Projection Mapping:
+                  EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: Colaborador.Id (Guid) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: Colaborador.Ativo (bool) Required ValueGenerated.OnAdd, 1], [Property: Colaborador.Matricula (string) Required MaxLength(8), 2], [Property: Colaborador.Nome (string) Required MaxLength(50), 3], }
+              SELECT c.Id, c.Ativo, c.Matricula, c.Nome
+              FROM dbo.Colaboradores AS c
+              WHERE c.Ativo), 
+          Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, Colaborador>, 
+          Pessoal.Infra.Data.Context.ExampleContext, 
+          False, 
+          False
+      )'
+dbug: 05/06/2021 10:31:21.406 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.
+dbug: 05/06/2021 10:31:21.406 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (0ms).
+dbug: 05/06/2021 10:31:21.408 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:31:21.410 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:31:21.411 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='5']
+      SELECT [c].[Id], [c].[Ativo], [c].[Matricula], [c].[Nome]
+      FROM [dbo].[Colaboradores] AS [c]
+      WHERE [c].[Ativo] = CAST(1 AS bit)
+info: 05/06/2021 10:31:21.427 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='5']
+      SELECT [c].[Id], [c].[Ativo], [c].[Matricula], [c].[Nome]
+      FROM [dbo].[Colaboradores] AS [c]
+      WHERE [c].[Ativo] = CAST(1 AS bit)
+dbug: 05/06/2021 10:31:21.474 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader was disposed.
+dbug: 05/06/2021 10:31:21.476 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:31:21.476 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:31:21.550 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'ExampleContext' disposed.
+info: 05/06/2021 10:32:01.335 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 5.0.0 initialized 'ExampleContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled CommandTimeout=5 MaxBatchSize=100 MigrationsAssembly=WebPonto.Infra.Data.Configuration 
+dbug: 05/06/2021 10:32:01.348 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:01.353 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:01.353 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 05/06/2021 10:32:01.354 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 05/06/2021 10:32:01.355 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='5']
+      SELECT 1
+info: 05/06/2021 10:32:01.365 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='5']
+      SELECT 1
+dbug: 05/06/2021 10:32:01.365 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:01.365 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:01.366 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteScalar'.
+dbug: 05/06/2021 10:32:01.366 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteScalar' (0ms).
+dbug: 05/06/2021 10:32:01.366 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:01.366 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:01.366 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='5']
+      
+      IF EXISTS
+          (SELECT *
+           FROM [sys].[objects] o
+           WHERE [o].[type] = 'U'
+           AND [o].[is_ms_shipped] = 0
+           AND NOT EXISTS (SELECT *
+               FROM [sys].[extended_properties] AS [ep]
+               WHERE [ep].[major_id] = [o].[object_id]
+                   AND [ep].[minor_id] = 0
+                   AND [ep].[class] = 1
+                   AND [ep].[name] = N'microsoft_database_tools_support'
+          )
+      )
+      SELECT 1 ELSE SELECT 0
+info: 05/06/2021 10:32:01.370 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='5']
+      
+      IF EXISTS
+          (SELECT *
+           FROM [sys].[objects] o
+           WHERE [o].[type] = 'U'
+           AND [o].[is_ms_shipped] = 0
+           AND NOT EXISTS (SELECT *
+               FROM [sys].[extended_properties] AS [ep]
+               WHERE [ep].[major_id] = [o].[object_id]
+                   AND [ep].[minor_id] = 0
+                   AND [ep].[class] = 1
+                   AND [ep].[name] = N'microsoft_database_tools_support'
+          )
+      )
+      SELECT 1 ELSE SELECT 0
+dbug: 05/06/2021 10:32:01.370 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:01.370 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:01.373 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.
+dbug: 05/06/2021 10:32:01.373 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (0ms).
+dbug: 05/06/2021 10:32:01.373 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:01.373 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:01.373 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='5']
+      SELECT [c].[Id], [c].[Ativo], [c].[Matricula], [c].[Nome]
+      FROM [dbo].[Colaboradores] AS [c]
+      WHERE [c].[Ativo] = CAST(1 AS bit)
+info: 05/06/2021 10:32:01.379 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='5']
+      SELECT [c].[Id], [c].[Ativo], [c].[Matricula], [c].[Nome]
+      FROM [dbo].[Colaboradores] AS [c]
+      WHERE [c].[Ativo] = CAST(1 AS bit)
+dbug: 05/06/2021 10:32:01.380 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader was disposed.
+dbug: 05/06/2021 10:32:01.380 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:01.380 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:01.382 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'ExampleContext' disposed.
+info: 05/06/2021 10:32:29.681 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 5.0.0 initialized 'ExampleContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled CommandTimeout=5 MaxBatchSize=100 MigrationsAssembly=WebPonto.Infra.Data.Configuration 
+dbug: 05/06/2021 10:32:29.689 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:29.689 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:29.689 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 05/06/2021 10:32:29.689 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 05/06/2021 10:32:29.689 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='5']
+      SELECT 1
+info: 05/06/2021 10:32:29.690 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='5']
+      SELECT 1
+dbug: 05/06/2021 10:32:29.690 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:29.690 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:29.690 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteScalar'.
+dbug: 05/06/2021 10:32:29.690 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteScalar' (0ms).
+dbug: 05/06/2021 10:32:29.690 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:29.690 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:29.690 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='5']
+      
+      IF EXISTS
+          (SELECT *
+           FROM [sys].[objects] o
+           WHERE [o].[type] = 'U'
+           AND [o].[is_ms_shipped] = 0
+           AND NOT EXISTS (SELECT *
+               FROM [sys].[extended_properties] AS [ep]
+               WHERE [ep].[major_id] = [o].[object_id]
+                   AND [ep].[minor_id] = 0
+                   AND [ep].[class] = 1
+                   AND [ep].[name] = N'microsoft_database_tools_support'
+          )
+      )
+      SELECT 1 ELSE SELECT 0
+info: 05/06/2021 10:32:29.723 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (33ms) [Parameters=[], CommandType='Text', CommandTimeout='5']
+      
+      IF EXISTS
+          (SELECT *
+           FROM [sys].[objects] o
+           WHERE [o].[type] = 'U'
+           AND [o].[is_ms_shipped] = 0
+           AND NOT EXISTS (SELECT *
+               FROM [sys].[extended_properties] AS [ep]
+               WHERE [ep].[major_id] = [o].[object_id]
+                   AND [ep].[minor_id] = 0
+                   AND [ep].[class] = 1
+                   AND [ep].[name] = N'microsoft_database_tools_support'
+          )
+      )
+      SELECT 1 ELSE SELECT 0
+dbug: 05/06/2021 10:32:29.723 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:29.723 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:29.726 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.
+dbug: 05/06/2021 10:32:29.726 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (0ms).
+dbug: 05/06/2021 10:32:29.726 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:29.726 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:29.726 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='5']
+      SELECT [c].[Id], [c].[Ativo], [c].[Matricula], [c].[Nome]
+      FROM [dbo].[Colaboradores] AS [c]
+      WHERE [c].[Ativo] = CAST(1 AS bit)
+info: 05/06/2021 10:32:29.730 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='5']
+      SELECT [c].[Id], [c].[Ativo], [c].[Matricula], [c].[Nome]
+      FROM [dbo].[Colaboradores] AS [c]
+      WHERE [c].[Ativo] = CAST(1 AS bit)
+dbug: 05/06/2021 10:32:29.730 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader was disposed.
+dbug: 05/06/2021 10:32:29.730 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:29.730 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:29.731 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'ExampleContext' disposed.
+info: 05/06/2021 10:32:30.247 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 5.0.0 initialized 'ExampleContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled CommandTimeout=5 MaxBatchSize=100 MigrationsAssembly=WebPonto.Infra.Data.Configuration 
+dbug: 05/06/2021 10:32:30.247 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:30.248 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:30.248 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 05/06/2021 10:32:30.248 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 05/06/2021 10:32:30.248 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='5']
+      SELECT 1
+info: 05/06/2021 10:32:30.248 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='5']
+      SELECT 1
+dbug: 05/06/2021 10:32:30.248 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:30.248 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:30.248 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteScalar'.
+dbug: 05/06/2021 10:32:30.248 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteScalar' (0ms).
+dbug: 05/06/2021 10:32:30.248 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:30.249 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:30.249 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='5']
+      
+      IF EXISTS
+          (SELECT *
+           FROM [sys].[objects] o
+           WHERE [o].[type] = 'U'
+           AND [o].[is_ms_shipped] = 0
+           AND NOT EXISTS (SELECT *
+               FROM [sys].[extended_properties] AS [ep]
+               WHERE [ep].[major_id] = [o].[object_id]
+                   AND [ep].[minor_id] = 0
+                   AND [ep].[class] = 1
+                   AND [ep].[name] = N'microsoft_database_tools_support'
+          )
+      )
+      SELECT 1 ELSE SELECT 0
+info: 05/06/2021 10:32:30.253 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='5']
+      
+      IF EXISTS
+          (SELECT *
+           FROM [sys].[objects] o
+           WHERE [o].[type] = 'U'
+           AND [o].[is_ms_shipped] = 0
+           AND NOT EXISTS (SELECT *
+               FROM [sys].[extended_properties] AS [ep]
+               WHERE [ep].[major_id] = [o].[object_id]
+                   AND [ep].[minor_id] = 0
+                   AND [ep].[class] = 1
+                   AND [ep].[name] = N'microsoft_database_tools_support'
+          )
+      )
+      SELECT 1 ELSE SELECT 0
+dbug: 05/06/2021 10:32:30.253 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:30.253 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:30.254 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.
+dbug: 05/06/2021 10:32:30.254 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (0ms).
+dbug: 05/06/2021 10:32:30.254 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:30.254 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:30.254 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='5']
+      SELECT [c].[Id], [c].[Ativo], [c].[Matricula], [c].[Nome]
+      FROM [dbo].[Colaboradores] AS [c]
+      WHERE [c].[Ativo] = CAST(1 AS bit)
+info: 05/06/2021 10:32:30.256 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='5']
+      SELECT [c].[Id], [c].[Ativo], [c].[Matricula], [c].[Nome]
+      FROM [dbo].[Colaboradores] AS [c]
+      WHERE [c].[Ativo] = CAST(1 AS bit)
+dbug: 05/06/2021 10:32:30.256 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader was disposed.
+dbug: 05/06/2021 10:32:30.256 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:30.256 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:30.257 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'ExampleContext' disposed.
+info: 05/06/2021 10:32:30.844 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 5.0.0 initialized 'ExampleContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled CommandTimeout=5 MaxBatchSize=100 MigrationsAssembly=WebPonto.Infra.Data.Configuration 
+dbug: 05/06/2021 10:32:30.844 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:30.844 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:30.844 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 05/06/2021 10:32:30.844 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 05/06/2021 10:32:30.844 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='5']
+      SELECT 1
+info: 05/06/2021 10:32:30.844 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='5']
+      SELECT 1
+dbug: 05/06/2021 10:32:30.844 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:30.845 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:30.845 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteScalar'.
+dbug: 05/06/2021 10:32:30.845 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteScalar' (0ms).
+dbug: 05/06/2021 10:32:30.845 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:30.845 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'meudb' on server 'GUFNDTINB2853\SQLEXPRESS01'.
+dbug: 05/06/2021 10:32:30.845 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='5']
+      
+      IF EXISTS
+          (SELECT *
+           FROM [sys].[objects] o
+           WHERE [o].[type] = 'U'
+           AND [o].[is_ms_shipped] = 0
+           AND NOT EXISTS (SELECT *
+               FROM [sys].[extended_properties] AS [ep]
