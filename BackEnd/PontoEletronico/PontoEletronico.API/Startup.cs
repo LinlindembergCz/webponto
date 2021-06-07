@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -16,6 +17,7 @@ namespace Pessoal.API
 {
     public class Startup
     {
+        private readonly StreamWriter _writer = new StreamWriter("log.txt", append: true);
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,10 +31,19 @@ namespace Pessoal.API
             services.AddMvc();
             services.AddDbContext<PontoContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), 
-                    b => b.MigrationsAssembly("WebPonto.Infra.Data.Configuration"));
+                //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));                    
+
+
+              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                    b => b.MigrationsAssembly("PontoEletronico.Infra.Data.Configuration")
+                         // .MaxBatchSize(100)//qtd maxima enviada por lote, 100 registros.
+                         // .CommandTimeout(10)//5 segundos time-out
+                         //.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null)//3 tentativas, aguarda 5 segundos para proxima tentativa
+                    )
+                    .LogTo(_writer.WriteLine, LogLevel.Trace);
             });
+
+            services.AddHttpClient();
 
             NativeInjector.Setup(services);
             services.AddAutoMapper();

@@ -16,5 +16,11 @@ namespace Pessoal.Domain.Aggregates.ColaboradorAggregate.Interfaces
         void Modify(Colaborador entity);
 
         void Delete(Guid id);
+
+        void Ativar(Guid id);
+
+        void Inativar(Guid id);
+
+        Task<ColaboradorAggregate.Colaborador> FindByMatricula(string matricula);
     }
 }

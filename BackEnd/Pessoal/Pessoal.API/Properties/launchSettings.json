@@ -31,6 +31,11 @@
       "launchBrowser": true,
       "launchUrl": "colaborador",
       "applicationUrl": "http://localhost:5000"
+    },
+    "Pessoal.API": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "colaborador"
     }
   }
 }

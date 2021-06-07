@@ -20,15 +20,17 @@ namespace Pessoal.Infra.Data.Configuration
 
             builder.Property(t => t.Nome).
                 HasMaxLength(50).
-                IsRequired(true);
+                IsRequired(true);           
 
             builder.Property(t => t.Matricula).
                             HasMaxLength(8).
                             IsRequired(true);
 
+            builder.HasIndex(p => new { p.Matricula })
+                .HasDatabaseName("idx_Colaboradores_Matricula")
+                .IsUnique();
+
             builder.Property(t => t.Ativo).HasDefaultValueSql(Boolean.TrueString);
-
-
 
         }
     }

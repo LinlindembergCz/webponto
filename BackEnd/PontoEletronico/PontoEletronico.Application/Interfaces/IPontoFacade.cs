@@ -10,8 +10,8 @@ namespace PontoEletronico.Application.Interfaces
     {
         Task<List<PontoResponse>> FindAllAsync();
                
-        void CreateEntrada(PontoRequest entity);
+        void CreateEntrada(string matricula);
 
-        void CreateSaida(PontoRequest entity);
+        void CreateSaida(string matricula);
     }
 }

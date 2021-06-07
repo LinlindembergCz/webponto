@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
+using System.Net.Http;
+using System.Text.Json;
 
 namespace PontoEletronico.Application.Facade
 {
@@ -15,11 +17,13 @@ namespace PontoEletronico.Application.Facade
     {
         private readonly IPontoService _Service;
         private readonly IMapper _mapper;
+        private readonly IHttpClientFactory _clientFactory;
 
-        public PontoFacade(IPontoService service, IMapper mapper)
+        public PontoFacade(IPontoService service, IMapper mapper, IHttpClientFactory clientFactory)
         {
             _Service = service;
             _mapper = mapper;
+            _clientFactory = clientFactory;
         }
 
         public async Task<List<PontoResponse>> FindAllAsync()
@@ -31,16 +35,52 @@ namespace PontoEletronico.Application.Facade
             return response;
         }
 
-
-        public void CreateEntrada(PontoRequest entity)
+        private async Task<ColaboradorResponse> FindColaboradorByMatricula(string matricula)
         {
-            var entityMappered = _mapper.Map<Ponto>(entity);
+            var request = new HttpRequestMessage(HttpMethod.Get,
+            $"http://localhost:5000/colaborador/matricula/{matricula}");
+
+            request.Headers.Add("Accept", "application/json");
+            request.Headers.Add("User-Agent", "HttpClientFactory-Sample");
+
+            var client = _clientFactory.CreateClient();
+
+            var response = await client.SendAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {         
+               using var responseStream = await response.Content.ReadAsStreamAsync();
+               var post = await JsonSerializer.DeserializeAsync<ColaboradorResponse>(responseStream);
+               return post;       
+            }
+            else return null;
+        }
+
+        public void CreateEntrada(string matricula)
+        {
+            var objeto = FindColaboradorByMatricula(matricula);
+
+            PontoRequest newEntity = new PontoRequest
+            {                
+                ColaboradorId = objeto.Result.id,
+                Nome = objeto.Result.nome
+            };
+
+            var entityMappered = _mapper.Map<Ponto>(newEntity);
             _Service.CreateEntrada(entityMappered);
         }
 
-        public void CreateSaida(PontoRequest entity)
+        public void CreateSaida(string matricula)
         {
-            var entityMappered = _mapper.Map<Ponto>(entity);
+            var objeto = FindColaboradorByMatricula(matricula);
+
+            PontoRequest newEntity = new PontoRequest
+            {
+                ColaboradorId = objeto.Result.id,
+                Nome = objeto.Result.nome
+            };               
+
+            var entityMappered = _mapper.Map<Ponto>(newEntity);
             _Service.CreateSaida(entityMappered);
         }
 

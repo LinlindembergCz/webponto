@@ -37,22 +37,35 @@ namespace Pessoal.Application.Facade
             response = _mapper.Map<ColaboradorResponse>(result);
             return response;
         }
-
+        public async Task<ColaboradorResponse> FindByMatricula(string matricula)
+        {
+            var result = await  _colaboradorService.FindByMatricula(matricula);
+            var response = new ColaboradorResponse();
+            response = _mapper.Map<ColaboradorResponse>(result);
+            return response;
+        }
         public void CreateRequest(ColaboradorRequest entity)
         {
+
             var entityMappered = _mapper.Map<Colaborador>(entity);
             _colaboradorService.Create(entityMappered);
         }
-
         public void ModifyRequest(ColaboradorRequest entity)
         {
             var entityMappered = _mapper.Map<Colaborador>(entity);
             _colaboradorService.Modify(entityMappered);
         }
-
         public void Delete(Guid id)
         {
             _colaboradorService.Delete(id);
+        }
+        public void Ativar(Guid id)
+        {
+            _colaboradorService.Ativar(id);
+        }
+        public void Inativar(Guid id)
+        {
+            _colaboradorService.Inativar(id);
         }
     }
 }

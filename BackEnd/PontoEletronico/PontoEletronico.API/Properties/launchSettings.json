@@ -30,7 +30,7 @@
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "apontador",
-      "applicationUrl": "http://localhost:5000"
+      "applicationUrl": "http://localhost:5001"
     }
   }
 }

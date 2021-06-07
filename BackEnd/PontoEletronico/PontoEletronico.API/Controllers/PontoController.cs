@@ -24,12 +24,12 @@ namespace Pessoal.API.Controllers
         public async Task<ActionResult<List<PontoResponse>>> Get() => await _facade.FindAllAsync();
 
         [HttpPost("entrada")]
-        public IActionResult RegistrarEntrada([FromBody] PontoRequest request)
+        public IActionResult RegistrarEntrada([FromBody] MatriculaRequest request)
         {
             try
-            {
-                _facade.CreateEntrada(request);
-                return Ok(new { msg = "criado com sucesso!" });
+            {            
+                 _facade.CreateEntrada(request.Matricula);
+                return Ok(new { msg = "entrada registrada com sucesso!" });
             }
             catch (Exception e)
             {
@@ -37,14 +37,13 @@ namespace Pessoal.API.Controllers
             }
         }
 
-
         [HttpPost("saida")]
-        public IActionResult RegistrarSaida([FromBody] PontoRequest request)
+        public IActionResult RegistrarSaida([FromBody] MatriculaRequest request)
         {
             try
             {
-                _facade.CreateSaida(request);
-                return Ok(new { msg = "criado com sucesso!" });
+                _facade.CreateSaida(request.Matricula);
+                return Ok(new { msg = "saida registrada com sucesso!" });
             }
             catch (Exception e)
             {
