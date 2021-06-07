@@ -1,0 +1,18 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="matricula">matricula</label>
+        <input
+          type="text"
+          class="form-control"
+          id="matricula"
+          [(ngModel)]="matricula"
+          name="matricula"
+        />
+      </div>
+      <button (click)="entrar()" class="btn btn-success">Entrar</button>
+      <button (click)="sair()" class="btn btn-success">Sair</button>
+    </div>
+  </div>
+</div>
