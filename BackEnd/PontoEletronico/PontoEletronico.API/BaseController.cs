@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using PontoEletronico.Application.Common.Response;
 
-namespace Pessoal.API
+namespace PontoEletronico.API
 {
     public class BaseController : ControllerBase
     {

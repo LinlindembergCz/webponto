@@ -1,0 +1,24 @@
+<style>
+.body {background-color: LightSteelBlue;}
+.li { color: black; }
+.h4 { color: black; }
+
+
+</style>
+
+<div class="body h4 li ul">
+  <nav class="navbar navbar-expand ">
+    <div class="navbar-nav mr-auto">
+      <li class="nav-item ">
+        <a routerLink="colaborador" class="nav-link">Colaborador</a>  
+      </li>
+      <li class="nav-item">
+        <a routerLink="colaboradorplanets" class="nav-link">Pesquisa</a>
+      </li>     
+    </div>
+  </nav>
+
+  <div class="container mt-3">
+    <router-outlet></router-outlet>
+  </div>
+</div>

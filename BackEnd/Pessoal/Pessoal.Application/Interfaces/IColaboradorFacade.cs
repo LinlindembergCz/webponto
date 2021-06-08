@@ -1,5 +1,5 @@
-﻿using Pessoal.Application.Commands.Request;
-using Pessoal.Application.Commands.Response;
+﻿using Pessoal.Domain.Commands.Request;
+using Pessoal.Domain.Commands.Response;
 using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;

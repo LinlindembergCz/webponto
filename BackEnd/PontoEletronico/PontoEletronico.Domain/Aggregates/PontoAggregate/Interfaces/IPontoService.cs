@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PontoEletronico.Domain.Commands.Response;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,5 +12,8 @@ namespace PontoEletronico.Domain.Aggregates.PontoAggregate.Interfaces
         void CreateEntrada(Ponto entity);
 
         void CreateSaida(Ponto entity);
+
+        Task<List<PontosColaboradorResponse>> ListPontosColaborador(string matricula);
+        
     }
 }

@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using PontoEletronico.Application.Commands.Request;
+using PontoEletronico.Domain.Commands.Request;
 
 namespace PontoEletronico.Application.Mappings
 {

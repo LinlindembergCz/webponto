@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  BaseURL : 'http://localhost:5001/'
+  BaseURL : 'http://localhost:5001/apontador/'
 };
 
 /*

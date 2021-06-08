@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using PontoEletronico.Domain.Aggregates.PontoAggregate;
-using PontoEletronico.Application.Commands.Response;
+using PontoEletronico.Domain.Commands.Response;
 
 namespace PontoEletronico.Application.Mappings
 {

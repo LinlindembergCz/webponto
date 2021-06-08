@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Pessoal.Application.Common.Response;
+using Pessoal.Domain.Common.Response;
 
 namespace Pessoal.API
 {

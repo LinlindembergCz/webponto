@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using PontoEletronico.Application.Facade;
 using PontoEletronico.Application.Interfaces;
+using PontoEletronico.Domain.Aggregates.Colaborador;
+using PontoEletronico.Domain.Aggregates.Colaborador.Interfaces;
 using PontoEletronico.Domain.Aggregates.PontoAggregate;
 using PontoEletronico.Domain.Aggregates.PontoAggregate.Interfaces;
 using PontoEletronico.Infra.Data.Repositories;
@@ -17,14 +19,11 @@ namespace PontoEletronico.Infra.CrossCutting.IoC
 
         private static void RegisterServices(IServiceCollection services)
         {
-            //como são serviços leves, opto por AddTransient
-            services.AddTransient<IPontoFacade, PontoFacade>();
-            services.AddTransient<IPontoService, PontoService>();
-            services.AddTransient<IPontoRepository, PontoRepository>();
-
-           // services.AddScoped<IColaboradorFacade, ColaboradorFacade>();
-           // services.AddScoped<IColaboradorService, ColaboradorService>();
-           // services.AddScoped<IColaboradorRepository, ColaboradorRepository>();
+            services.AddScoped<IPontoFacade, PontoFacade>();
+            services.AddScoped<IPontoService, PontoService>();
+            services.AddScoped<IColaboradorService, ColaboradorService>();
+            
+            services.AddScoped<IPontoRepository, PontoRepository>();
         }
 
         private static void RegisterAutoMapper(IServiceCollection services)

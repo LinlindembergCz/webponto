@@ -1,0 +1,18 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/apontador/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Patch", "Delete" ]
+    }
+  ],
+
+  "GlobalConfiguration": {}
+}

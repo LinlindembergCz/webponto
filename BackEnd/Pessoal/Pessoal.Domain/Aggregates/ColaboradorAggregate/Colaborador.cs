@@ -8,7 +8,7 @@ namespace Pessoal.Domain.Aggregates.ColaboradorAggregate
         public Guid Id { get; set; }
         public string Nome { get; set; }
         public string Matricula { get; set; }
-        public bool Ativo { get; private set; }
+        public bool Ativo { get; set; }
    
         public void Ativar()
         {

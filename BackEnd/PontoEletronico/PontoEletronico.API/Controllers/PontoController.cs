@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using PontoEletronico.Application.Interfaces;
 using System.Threading.Tasks;
 using System;
-using PontoEletronico.Application.Commands.Response;
-using PontoEletronico.Application.Commands.Request;
+using PontoEletronico.Domain.Commands.Response;
+using PontoEletronico.Domain.Commands.Request;
 using System.Collections.Generic;
 
-namespace Pessoal.API.Controllers
+namespace PontoEletronico.API.Controllers
 {
     [Route("apontador")]
     [ApiController]

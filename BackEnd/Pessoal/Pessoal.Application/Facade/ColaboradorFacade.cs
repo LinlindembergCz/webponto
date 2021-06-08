@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Pessoal.Application.Interfaces;
-using Pessoal.Application.Commands.Request;
-using Pessoal.Application.Commands.Response;
+using Pessoal.Domain.Commands.Request;
+using Pessoal.Domain.Commands.Response;
 using Pessoal.Domain.Aggregates.ColaboradorAggregate;
 using Pessoal.Domain.Aggregates.ColaboradorAggregate.Interfaces;
 using System.Collections.Generic;

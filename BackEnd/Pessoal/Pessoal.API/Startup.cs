@@ -30,6 +30,7 @@ namespace Pessoal.API
             // services.AddMvc();
             services.AddControllers();
 
+            services.AddScoped<PessoalContext>();
             services.AddDbContext<PessoalContext>(options =>
             {               
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
@@ -39,7 +40,7 @@ namespace Pessoal.API
                           .EnableRetryOnFailure(3, TimeSpan.FromSeconds(10), null)//3 tentativas, aguarda 5 segundos para proxima tentativa
                     )
                     .LogTo(_writer.WriteLine, LogLevel.Trace);
-            });
+            }, ServiceLifetime.Scoped);
 
             NativeInjector.Setup(services);
             services.AddAutoMapper();

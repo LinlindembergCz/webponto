@@ -12,6 +12,8 @@ using System;
 using System.IO;
 using System.Linq;
 using Microsoft.OpenApi.Models;
+using PontoEletronico.Application.Interfaces;
+using PontoEletronico.Application.Facade;
 
 namespace Pessoal.API
 {
@@ -29,6 +31,7 @@ namespace Pessoal.API
         {
            
             services.AddMvc();
+            services.AddScoped<PontoContext>();
             services.AddDbContext<PontoContext>(options =>
             {
                 //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));                    
@@ -41,9 +44,10 @@ namespace Pessoal.API
                          //.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null)//3 tentativas, aguarda 5 segundos para proxima tentativa
                     )
                     .LogTo(_writer.WriteLine, LogLevel.Trace);
-            });
-
+            }, ServiceLifetime.Scoped);
+             
             services.AddHttpClient();
+                
 
             NativeInjector.Setup(services);
             services.AddAutoMapper();

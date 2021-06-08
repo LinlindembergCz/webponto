@@ -17,14 +17,9 @@ namespace Pessoal.Infra.CrossCutting.IoC
 
         private static void RegisterServices(IServiceCollection services)
         {
-            //como são serviços leves, opto por AddTransient
-            services.AddTransient<IColaboradorFacade, ColaboradorFacade>();
-            services.AddTransient<IColaboradorService, ColaboradorService>();
-            services.AddTransient<IColaboradorRepository, ColaboradorRepository>();
-
-            //services.AddScoped<IColaboradorFacade, ColaboradorFacade>();
-            //services.AddScoped<IColaboradorService, ColaboradorService>();
-            //services.AddScoped<IColaboradorRepository, ColaboradorRepository>();
+            services.AddScoped<IColaboradorFacade, ColaboradorFacade>();
+            services.AddScoped<IColaboradorService, ColaboradorService>();
+            services.AddScoped<IColaboradorRepository, ColaboradorRepository>();
         }
 
         private static void RegisterAutoMapper(IServiceCollection services)

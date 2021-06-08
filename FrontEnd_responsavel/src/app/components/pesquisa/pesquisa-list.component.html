@@ -1,0 +1,47 @@
+<div class="list row">
+  <div class="col-md-8">
+      <div class="input-group mb-8">Matricula</div>
+      <div class="input-group mb-8">
+        <input
+        type="text"
+        class="form-control"
+        placeholder="Search by matricula"
+        [(ngModel)]="matricula"
+        />
+      </div>    
+   
+
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="search()"
+        >Pesquisar
+        </button>
+      </div>
+  </div>
+
+  <div class="col-md-6" id="listHorizont">
+    <ul class="list-group">
+      <li
+        class="list-group-item list-group-item-action active"
+        *ngFor="let entity of entyties; let i = index"
+        [class.active]="i == currentIndex" >
+        {{ entity.nome }}        
+      </li>
+      <li
+        class="list-group-item list-group-item-action active"
+        *ngFor="let entity of entyties; let i = index"
+        [class.active]="i == currentIndex" >
+        {{ entity.dia }}        
+      </li>
+      <li
+        class="list-group-item list-group-item-action active"
+        *ngFor="let entity of entyties; let i = index"
+        [class.active]="i == currentIndex" >
+        {{ entity.horas }}        
+      </li>
+    </ul>
+    
+  </div>  
+</div>

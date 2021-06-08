@@ -11,6 +11,7 @@ namespace PontoEletronico.Domain.Aggregates.PontoAggregate
         public string Nome { get; set; }
         public DateTimeOffset DataHora { get; set; }
         public IndicadorEntradaSaida Indicador { get; set; }
+        public int Turno { get; set; }
         public bool PontuouSaida()
         {
            return this.Indicador == IndicadorEntradaSaida.SAIDA;

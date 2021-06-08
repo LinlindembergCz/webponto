@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Pessoal.Application.Interfaces;
 using System.Threading.Tasks;
 using System;
-using Pessoal.Application.Commands.Response;
-using Pessoal.Application.Commands.Request;
+using Pessoal.Domain.Commands.Response;
+using Pessoal.Domain.Commands.Request;
 using System.Collections.Generic;
 
 namespace Pessoal.API.Controllers

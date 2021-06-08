@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PontoEletronico.Domain.Enums;
+using PontoEletronico.Domain.Commands.Response;
+using System.Data;
+using System.Data.Common;
 
 namespace PontoEletronico.Infra.Data.Repositories
 {
@@ -22,55 +25,55 @@ namespace PontoEletronico.Infra.Data.Repositories
         public async Task<ICollection<Ponto>> FindAllAsync() =>
            await _context.Ponto.AsNoTracking().ToListAsync();
 
+        public async Task<ICollection<PontosColaboradorResponse>> ListPontosColaborador(string matricula)
+        {
+            var con = _context.Database.GetDbConnection();
+            con.Open();
+            var cmd = con.CreateCommand();
+            cmd.CommandText = $" select  distinct " +
+            " Nome,  " +
+            " FORMAT(DataHora, 'yyyy-MM-dd') Dia," +
+            " cast( ( datediff(second," +
+            " FORMAT( (Select DataHora from apontamentos ap1 where " +
+            "          ap1.turno = 1 and indicador = 'E' and colaboradorId = ap.colaboradorId), 'HH:mm'), " +
+            " FORMAT( (Select DataHora from apontamentos ap1 where " +
+            "         ap1.turno  = 1 and indicador = 'S' and colaboradorId = ap.colaboradorId), 'HH:mm') )/3600.0 ) as decimal (3,2)) + " +
+            " cast( ( datediff(second, " +
+            " FORMAT( (Select DataHora from apontamentos ap1 where " +
+            "         ap1.turno = 2 and indicador = 'E' and colaboradorId = ap.colaboradorId), 'HH:mm'), " +
+            " FORMAT( (Select DataHora from apontamentos ap1 where " +
+            "         ap1.turno = 2 and indicador = 'S' and colaboradorId = ap.colaboradorId), 'HH:mm') )/3600.0 ) as decimal (3,2))" +
+            //...
+            //atualmente o sistema só contabiliza dois turnos. 
+            //Para mais turnos bastaria adicionar mais um turno a consulta.            
+            " from apontamentos ap";
 
-        private void Create(Ponto entity)
+            DbDataReader rdr = await cmd.ExecuteReaderAsync(CommandBehavior.SequentialAccess);        
+            
+            List<PontosColaboradorResponse> Pontos = new List<PontosColaboradorResponse>();
+            while (await rdr.ReadAsync())
+            {
+                 Pontos.Add(new PontosColaboradorResponse {
+                    Nome = rdr.GetString(0),
+                    Dia = rdr.GetString(1),
+                    Horas = rdr.GetDecimal(2),
+                });
+            }
+            return Pontos;                     
+        }
+        public void Create(Ponto entity)
         {
             _context.Ponto.Add(entity);
             _context.SaveChanges();
         }
-
-        public void CreateEntrada(Ponto entity)
-        {
-            if (this.VerifyEntrada(entity.ColaboradorId))
-            {
-                entity.Indicador = IndicadorEntradaSaida.ENTRADA;
-                Create(entity);
-            }
-            else throw new InvalidOperationException("Colaborador já registrou a Entrada do ponto!");
-        }
-
-        public void CreateSaida(Ponto entity)
-        {
-            if (this.VerifySaida(entity.ColaboradorId))
-            {
-                entity.Indicador = IndicadorEntradaSaida.SAIDA;
-                Create(entity);
-            }
-            else throw new InvalidOperationException("Colaborador não efetuou a Entrada ou já registrou a Saída do ponto!");
-        }
-
-        private Ponto FindLastPontoOfDay(Guid colaboradorId)
+        public Ponto FindLastPontoOfDay(Guid colaboradorId)
         {
             Ponto ponto = _context.Ponto.OrderByDescending(p => p.DataHora).AsNoTracking().
                                          FirstOrDefault(p =>
                                         (p.ColaboradorId == colaboradorId) &&
-                                        (p.DataHora.Date == DateTime.Now.Date));
-
-            _context.Ponto.AsNoTracking().ToListAsync();
+                                        (p.DataHora.Date == DateTime.Now.Date));       
             return ponto;
         }        
-        private bool VerifyEntrada(Guid colaboradorId)
-        {
-            Ponto ponto = FindLastPontoOfDay(colaboradorId);
-            //Pode pontuar Entrada se o colaborador nÃ£o efetuou a Entrad a OU jÃ¡ efetuou a Saida
-             return (ponto == null) || (ponto != null && ponto.PontuouSaida());
-            
-        }
-        private bool VerifySaida(Guid colaboradorId)
-        {
-            Ponto ponto = FindLastPontoOfDay(colaboradorId);
-                //Pode pontuar Saida se o colaborador ainda nÃ£o efetuou a Saida E jÃ¡ efetuou a Entrada  
-                return (ponto != null && ponto.PontuouEntrada());
-        }
+
     }
 }

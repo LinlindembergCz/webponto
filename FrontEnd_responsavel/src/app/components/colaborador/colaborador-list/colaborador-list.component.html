@@ -1,0 +1,40 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <div class="input-group-append">
+        <a href="/addColaborador" >Add</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h4 class="h4">Colaborador</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item list-group-item-action active"
+        *ngFor="let entity of entyties; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveEntity(entity, i)"       
+        routerLink="/colaborador/{{ entity.id }}" 
+      >
+        {{ entity.nome }}
+        
+      </li>
+    </ul>
+
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="entity">
+      
+      <h4>Colaborador</h4>
+      <div>
+        <label><strong>Id:</strong></label> {{ entity.id }}
+      </div>
+      <div>
+        <label><strong>Nome:</strong></label> {{ entity.nome }}
+      </div>
+      <div>
+        <label><strong>matricula:</strong></label> {{ entity.matricula }}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
@@ -15,11 +15,13 @@ export class PontoEletronicoService {
   }
 
   entrar(data: any): Observable<any> {
-    return this.http.post(this.baseUrl+'apontador/entrada', data);
+    console.log(data);
+    return this.http.post(this.baseUrl+'entrada', data);
   }
 
   sair(data: any): Observable<any> {
-    return this.http.post(this.baseUrl+'apontador/saida', data);
+    console.log(data);
+    return this.http.post(this.baseUrl+'saida', data);
   }
 
 

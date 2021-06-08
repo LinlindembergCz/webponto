@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Pessoal.Domain.Aggregates.ColaboradorAggregate;
-using Pessoal.Application.Commands.Response;
+using Pessoal.Domain.Commands.Response;
 
 namespace Pessoal.Application.Mappings
 {

@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Pessoal.Application.Commands.Request;
+using Pessoal.Domain.Commands.Request;
 
 namespace Pessoal.Application.Mappings
 {
