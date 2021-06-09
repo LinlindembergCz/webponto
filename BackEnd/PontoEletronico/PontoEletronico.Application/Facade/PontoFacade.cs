@@ -63,7 +63,10 @@ namespace PontoEletronico.Application.Facade
 
         public async Task<List<PontosColaboradorResponse>> ListPontosColaborador(string matricula)
         {
-            var result = await _Service.ListPontosColaborador(matricula);
+            //O responsavel informa a matricular e o sistema consulta o Id do colaborador
+            var colaborador = _ColaboradorService.FindColaboradorByMatricula(matricula);
+
+            var result = await _Service.ListPontosColaborador(colaborador.Result.id);
             var response = new List<PontosColaboradorResponse>();
             response.AddRange(result.Select(x => _mapper.Map<PontosColaboradorResponse>(x)));
             return response;

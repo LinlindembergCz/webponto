@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Text.Json;
 using PontoEletronico.Domain.Aggregates.Colaborador.Interfaces;
 using PontoEletronico.Domain.Commands.Response;
+using System;
 
 namespace PontoEletronico.Domain.Aggregates.Colaborador
 {
@@ -16,9 +17,13 @@ namespace PontoEletronico.Domain.Aggregates.Colaborador
         }
 
         public async Task<ColaboradorResponse> FindColaboradorByMatricula(string matricula)
-        {
-            var request = new HttpRequestMessage(HttpMethod.Get,
-            $"http://localhost:5000/colaborador/matricula/{matricula}");//colocar em variaveis de ambiente
+        {   //colocar a rota em variaveis de ambiente 
+            //caso mude, desta forma não precisará fazer manutenção e em seguida um novo deploy.
+            //variavel : RotaFindColaboradorByMatricula: http://localhost:5000/colaborador/matricula/
+            var rota = Environment.GetEnvironmentVariable("RotaFindColaboradorByMatricula",
+                                                            EnvironmentVariableTarget.User);     
+
+            var request = new HttpRequestMessage(HttpMethod.Get,$"{rota}{matricula}");
 
             request.Headers.Add("Accept", "application/json");
             request.Headers.Add("User-Agent", "HttpClientFactory");
@@ -32,7 +37,7 @@ namespace PontoEletronico.Domain.Aggregates.Colaborador
                 using var responseStream = await response.Content.ReadAsStreamAsync();
                 var post = await JsonSerializer.DeserializeAsync<ColaboradorResponse>(responseStream);
 
-                return post;//.ativo ? post : null;
+                return post;//.Ativo ? post : null;
             }
             else return null;
         }

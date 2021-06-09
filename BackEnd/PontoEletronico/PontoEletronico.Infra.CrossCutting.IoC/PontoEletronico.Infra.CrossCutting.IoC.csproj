@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PontoEletronico.Application\PontoEletronico.Application.csproj" />
     <ProjectReference Include="..\PontoEletronico.Infra.Data\PontoEletronico.Infra.Data.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="5.0.1" />
   </ItemGroup>
 
 </Project>

@@ -20,8 +20,8 @@ namespace PontoEletronico.Domain.Aggregates.PontoAggregate
         public async Task<List<Ponto>> FindAllAsync() 
             => (await _Repository.FindAllAsync()).ToList();
 
-        public async Task<List<PontosColaboradorResponse>> ListPontosColaborador(string matricula)
-            => (await _Repository.ListPontosColaborador(matricula)).ToList();
+        public async Task<List<PontosColaboradorResponse>> ListPontosColaborador(Guid colaboradorid)
+            => (await _Repository.ListPontosColaborador(colaboradorid)).ToList();
 
 
         private bool VerifyEntrada(Guid colaboradorId)

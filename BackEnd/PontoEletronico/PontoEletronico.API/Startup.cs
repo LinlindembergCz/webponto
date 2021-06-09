@@ -12,10 +12,11 @@ using System;
 using System.IO;
 using System.Linq;
 using Microsoft.OpenApi.Models;
-using PontoEletronico.Application.Interfaces;
-using PontoEletronico.Application.Facade;
+using System.Net.Http;
+using PontoEletronico.Domain.Aggregates.Colaborador.Interfaces;
+using PontoEletronico.Domain.Aggregates.Colaborador;
 
-namespace Pessoal.API
+namespace PontoEletronico.API
 {
     public class Startup
     {
@@ -34,20 +35,17 @@ namespace Pessoal.API
             services.AddScoped<PontoContext>();
             services.AddDbContext<PontoContext>(options =>
             {
-                //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));                    
+              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));                    
 
 
               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                     b => b.MigrationsAssembly("PontoEletronico.Infra.Data.Configuration")
-                         // .MaxBatchSize(100)//qtd maxima enviada por lote, 100 registros.
-                         // .CommandTimeout(10)//5 segundos time-out
-                         //.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null)//3 tentativas, aguarda 5 segundos para proxima tentativa
+                          .MaxBatchSize(100)//qtd maxima enviada por lote, 100 registros.
+                          .CommandTimeout(10)//5 segundos time-out
+                         .EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null)//3 tentativas, aguarda 5 segundos para proxima tentativa
                     )
                     .LogTo(_writer.WriteLine, LogLevel.Trace);
             }, ServiceLifetime.Scoped);
-             
-            services.AddHttpClient();
-                
 
             NativeInjector.Setup(services);
             services.AddAutoMapper();

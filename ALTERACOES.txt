@@ -1,0 +1,364 @@
+ColaboradorController
+
++        [HttpGet("matricula/{matricula}")]
++
++        public async Task<ActionResult<ColaboradorResponse>> Get(string matricula)
++        //public ActionResult<ColaboradorResponse> Get(string matricula)
++        {
++            var p = await _facade.FindByMatricula(matricula);
++            return Ok(p);
++        }
+
++        [HttpPatch("ativar")]
++        public IActionResult Ativar([FromBody] Guid id)
++        {
++            try
++            {
++                _facade.Ativar(id);
++                return Ok(new { msg = "Ativado com sucesso!" });
++            }
++            catch (Exception e)
++            {
++                return new ObjectResult("Falhou! Mensagem: " + e.Message);
++            }
++        }
++
++        [HttpPatch("inativar")]
++        public IActionResult Inativar([FromBody] Guid id)
++        {
++            try
++            {
++                _facade.Inativar(id);
++                return Ok(new { msg = "Inativado com sucesso!" });
++            }
++            catch (Exception e)
++            {
++                return new ObjectResult("Falhou! Mensagem: " + e.Message);
++            }
++        }
+
+
+ColaboradorFacade 
+
+
++        public async Task<ColaboradorResponse> FindByMatricula(string matricula)
++        {
++            var result = await  _colaboradorService.FindByMatricula(matricula);
++            var response = new ColaboradorResponse();
++            response = _mapper.Map<ColaboradorResponse>(result);
++            return response;
++        }
+
++        public void Ativar(Guid id)
++        {
++            _colaboradorService.Ativar(id);
++        }
++        public void Inativar(Guid id)
++        {
++            _colaboradorService.Inativar(id);
++        }
+
+IColaboradorFacade 
+
++        Task<ColaboradorResponse> FindByMatricula(string matricula);
++        void Ativar(Guid id);
++        void Inativar(Guid id);
+
+
+
+IColaboradorService
+
++        Task<Colaborador> FindByMatricula(string matricula);
+
+
++        void Ativar(Guid id);
++
++        void Inativar(Guid id);
+
+ColaboradorService
+
++        public Colaborador FindById(Guid id) => (_colaboradorRepository.FindById(id));
++
++        public async Task<Colaborador> FindByMatricula(string matricula) => (await _colaboradorRepository.FindByMatricula(matricula));
+
++        public void Ativar(Guid id)
++        {
++            _colaboradorRepository.Ativar(id);
++        }
++        public void Inativar(Guid id)
++        {
++            _colaboradorRepository.Inativar(id);
++        }
+
+
+IColaboradorRepository
+
+
++        void Ativar(Guid id);
++
++        void Inativar(Guid id);
++
++        Task<ColaboradorAggregate.Colaborador> FindByMatricula(string matricula);
+
+ColaboradorRepository
+
++        public Colaborador FindById(Guid id)=> _context.Colaborador.First(p => p.Id == id);                
++         public async Task<Colaborador> FindByMatricula(string matricula) =>      
++             await _context.Colaborador.FirstAsync(p => p.Matricula == matricula);
+
++        public void Ativar(Guid id)
++        {
++            //1Âº
++            //cmd.CommandText = "update Colaboradores set...";
++            //cmd.ExecuteNonQuery();
++
++            //2Âº
++            //db.Database.ExecuteSqlRaw("update Colaboradores set"...;
++
++            //3Âº
++            _context.Database.ExecuteSqlInterpolated($"update Colaboradores set Ativo=1 where id={id}");
++        }
++
++        public void Inativar(Guid id)
++        {
++            _context.Database.ExecuteSqlInterpolated($"update Colaboradores set Ativo=0 where id={id}");
+         }
+
+
+ColaboradorConfiguracao
+
++            builder.HasIndex(p => new { p.Matricula })
++                .HasDatabaseName("idx_Colaboradores_Matricula")
++                .IsUnique();
+
++            builder.Property(t => t.Ativo).HasDefaultValueSql(Boolean.TrueString);
+
+
+PontoController
+
++                return Ok(new { msg = "entrada registrada com sucesso!" });+                
+                 return Ok(new { msg = "saida registrada com sucesso!" });
+
+PontoEletronico/LauncheSettings 
+
++      "applicationUrl": "http://localhost:5001"
+
+PontoEletronico/Startup
+
+services.AddHttpClient();
+
+
+PontoRequest
+
+
++        public string Matricula { get; set; }
+
+
+IPontoFacade
+
++        Task<bool> CreateEntrada(PontoRequest entity);
++
++        Task<bool> CreateSaida(PontoRequest entity);
+
+
+PontoEletronico.Application
+
+//Instalar
++    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0-preview.4.21253.7" />
+
+PontoFacade
+
++using System.Net;
++using System.IO;
++//using Newtonsoft.Json;
++using System.Net.Http;
++using System.Text.Json;
+
+
+private readonly IHttpClientFactory _clientFactory;
+
+public PontoFacade(IPontoService service, IMapper mapper, IHttpClientFactory clientFactory)
+
+ _clientFactory = clientFactory;
+
+
++        private async Task<ColaboradorResponse> FindColaboradorByMatricula(string matricula)
++        {
++            var request = new HttpRequestMessage(HttpMethod.Get,
++            $"http://localhost:5000/colaborador/matricula/{matricula}");
++
++            request.Headers.Add("Accept", "application/json");
++            request.Headers.Add("User-Agent", "HttpClientFactory-Sample");
++
++            var client = _clientFactory.CreateClient();
++
++            var response = await client.SendAsync(request);
++
++            if (response.IsSuccessStatusCode)
++            {         
++               using var responseStream = await response.Content.ReadAsStreamAsync();
++               var post =   await JsonSerializer.DeserializeAsync<ColaboradorResponse>(responseStream);
++               return post;       
++            }
++            else return null;
++
++               
++            /*
++            var requisicaoWeb =  WebRequest.CreateHttp($"http://localhost:5000/colaborador/matricula/{matricula}");
++            requisicaoWeb.Method = "GET";
++
++            using (var resposta = await requisicaoWeb.GetResponseAsync())
++            {
++                var streamDados = resposta.GetResponseStream();
++                StreamReader reader = new StreamReader(streamDados);
++                object objResponse = reader.ReadToEnd();
++                var post = JsonConvert.DeserializeObject<ColaboradorResponse>(objResponse.ToString());
++
++                resposta.Close();
++
++                return post;                
++            }
++            */
++            
++        }
+
+
++        public async Task<bool> CreateEntrada(PontoRequest entity)
+         {
++            ColaboradorResponse post = await FindColaboradorByMatricula(entity.Matricula);     
++             _Service.CreateEntrada(post.id, post.nome);
++            return true;
+         }
+
+
++        public async Task<bool> CreateSaida(PontoRequest entity)
+         {
++            var post = await FindColaboradorByMatricula(entity.Matricula);
++            _Service.CreateSaida(post.id, post.nome);
++            return true;
+         }
+
+IPontoService
++        void CreateEntrada(Guid colaboradorId, string nome);
++        void CreateSaida(Guid colaboradorId, string nome);
+
+
+
+Domain.Ponto
+
+
++using PontoEletronico.Domain.Enums;
+
+
++        public bool PontuouSaida()
++        {
++           return this.Indicador == IndicadorEntradaSaida.SAIDA;
++        }
+
+
++        public bool PontuouEntrada()
++        {
++           return Indicador == IndicadorEntradaSaida.ENTRADA;
++        }
+
++        //Inicializei no Fluent API PontoConfiguration
+         /*
+          public Ponto()
+          {
+              Id = Guid.NewGuid();
+          }
+         */
+
+
+PontoService 
+
+
++        public void CreateEntrada(Guid colaboradorId, string nome)
+         {
++            Ponto entity = new Ponto { ColaboradorId = colaboradorId, Nome = nome };
+             _Repository.CreateEntrada(entity);
+         }
+
++        public void CreateSaida(Guid colaboradorId, string nome)
+         {
++            Ponto entity = new Ponto { ColaboradorId = colaboradorId, Nome = nome };
+             _Repository.CreateSaida(entity);
+         }
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PontoEletronico.Domain.Enums
+{
+    public enum IndicadorEntradaSaida
+    {
+        ENTRADA,
+        SAIDA
+    }
+}
+
+ConversorIndicadorENTRADASAIDA
+
++using PontoEletronico.Domain.Enums;
+
+
+PontoRepository
+
++using PontoEletronico.Domain.Enums;
+
+
+
++        private Ponto FindLastPontoOfDay(Guid colaboradorId)
++        {
++            Ponto ponto = _context.Ponto.OrderByDescending(p => p.DataHora).AsNoTracking().
++                                  FirstOrDefault(p =>
++                                                (p.ColaboradorId == colaboradorId) &&
++                                                (p.DataHora.Date == DateTime.Now.Date));
++
++            _context.Ponto.AsNoTracking().ToListAsync();
++            return ponto;
++        }        
++        private bool VerifyEntrada(Guid colaboradorId)
++        {
++            Ponto ponto = FindLastPontoOfDay(colaboradorId);
++            //Pode pontuar Entrada se o colaborador nÃ£o efetuou a Entrad a OU jÃ¡ efetuou a Saida
++             return (ponto == null) || (ponto != null && ponto.PontuouSaida());
++            
++        }
++        private bool VerifySaida(Guid colaboradorId)
++        {
++             Ponto ponto = FindLastPontoOfDay(colaboradorId);
++            //Pode pontuar Saida se o colaborador ainda nÃ£o efetuou a Saida E jÃ¡ efetuou a Entrada  
++            return (ponto != null && ponto.PontuouEntrada());
++        }
+
+
+        private void Create(Ponto entity)
+        {
+            _context.Ponto.Add(entity);
+            _context.SaveChanges();
+        }
+        public void CreateEntrada(Ponto entity)
+        {
+            if ( this.VerifyEntrada(entity.ColaboradorId) )
+            {
+                entity.Indicador = IndicadorEntradaSaida.ENTRADA;
+                Create(entity);
+            }
+            else throw new InvalidOperationException("Colaborador já registrou a Entrada do ponto!");
+        }
+        public void CreateSaida(Ponto entity)
+        {
+            if ( this.VerifySaida(entity.ColaboradorId))
+            {
+                entity.Indicador = IndicadorEntradaSaida.SAIDA;
+                Create(entity);
+            }
+            else throw new InvalidOperationException("Colaborador não efetuou a Entrada ou já registrou a Saída do ponto!");
+        }

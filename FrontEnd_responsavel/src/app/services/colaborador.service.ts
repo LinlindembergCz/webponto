@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Colaborador } from '../models/colaborador.models';
-import {BaseURL} from '../constants';
 import { CreateColaboradorResponse } from '../Viewmodels/CreateColaboradorResponse';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,7 @@ export class ColaboradorService {
   baseUrl = '';
 
   constructor(private http: HttpClient ) { 
-    this.baseUrl = BaseURL+'colaborador';
+    this.baseUrl = environment.BaseColaboradorURL+'colaborador';
 
   }
 

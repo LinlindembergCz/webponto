@@ -25,13 +25,18 @@ namespace PontoEletronico.Infra.Data.Configuration
 
             builder.Property(t => t.Nome).
                     HasColumnName("Nome").
+                    HasMaxLength(50).
                     IsRequired(true);
 
             builder.Property(p => p.Indicador).
+                    HasMaxLength(1).
                     HasConversion(new ConversorIndicadorEntradaSaida()); //Ler e escever Entrada <=> E e Saida <=> S
 
             builder.Property(p => p.DataHora).
                     HasDefaultValueSql("GETDATE()");
+
+            builder.Property(t => t.Turno).
+                    HasColumnName("Turno");
 
 
 

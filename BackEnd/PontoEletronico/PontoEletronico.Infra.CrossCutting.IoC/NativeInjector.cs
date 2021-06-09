@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Polly;
+using Polly.Extensions.Http;
 using PontoEletronico.Application.Facade;
 using PontoEletronico.Application.Interfaces;
 using PontoEletronico.Domain.Aggregates.Colaborador;
@@ -6,6 +8,7 @@ using PontoEletronico.Domain.Aggregates.Colaborador.Interfaces;
 using PontoEletronico.Domain.Aggregates.PontoAggregate;
 using PontoEletronico.Domain.Aggregates.PontoAggregate.Interfaces;
 using PontoEletronico.Infra.Data.Repositories;
+using System;
 
 namespace PontoEletronico.Infra.CrossCutting.IoC
 {
@@ -24,6 +27,14 @@ namespace PontoEletronico.Infra.CrossCutting.IoC
             services.AddScoped<IColaboradorService, ColaboradorService>();
             
             services.AddScoped<IPontoRepository, PontoRepository>();
+
+            services.AddHttpClient<IColaboradorService, ColaboradorService>()
+                    .AddPolicyHandler(HttpPolicyExtensions
+                    .HandleTransientHttpError()
+                    .OrResult(msg => msg.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    .WaitAndRetryAsync(6, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2,
+                                                                               retryAttempt)))).
+                    SetHandlerLifetime(TimeSpan.FromMinutes(5));
         }
 
         private static void RegisterAutoMapper(IServiceCollection services)

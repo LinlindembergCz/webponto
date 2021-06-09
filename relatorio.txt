@@ -1,0 +1,12 @@
+select distinct
+    Nome,
+	FORMAT (DataHora, 'yyyy-MM-dd '), 	
+	DATEDIfF( hour , FORMAT ((Select DataHora from apontamentos ap1 where 
+	ap1.expediente = '1' and indicador='E' and colaboradorId = ap.colaboradorId), 'HH:mm:ss'),
+	FORMAT ((Select DataHora from apontamentos ap1 where 
+	ap1.expediente = '1' and indicador='S' and colaboradorId = ap.colaboradorId), 'HH:mm:ss') ) +
+	DATEDIfF( hour ,FORMAT ((Select DataHora from apontamentos ap1 where 
+	ap1.expediente = '2' and indicador='E' and colaboradorId = ap.colaboradorId), 'HH:mm:ss'),
+	FORMAT ((Select DataHora from apontamentos ap1 where 
+	ap1.expediente = '2' and indicador='S' and colaboradorId = ap.colaboradorId), 'HH:mm:ss') ) as Dias
+from apontamentos ap

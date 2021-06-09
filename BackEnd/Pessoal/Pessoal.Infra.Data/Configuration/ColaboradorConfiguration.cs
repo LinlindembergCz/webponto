@@ -9,10 +9,8 @@ namespace Pessoal.Infra.Data.Configuration
     {
         public void Configure(EntityTypeBuilder<Colaborador> builder)
         {
-          //  builder.Ignore(b => b.DomainEvents);
-
             builder.ToTable("Colaboradores", "dbo").HasKey(t => t.Id);
-            builder.HasQueryFilter(p => p.Ativo);//So consulta colaboradores Ativos
+            builder.HasQueryFilter(p => p.Ativo);//So consulta os colaboradores Ativos
 
             builder.Property(t => t.Id).
                 IsRequired(true).
@@ -20,7 +18,11 @@ namespace Pessoal.Infra.Data.Configuration
 
             builder.Property(t => t.Nome).
                 HasMaxLength(50).
-                IsRequired(true);           
+                IsRequired(true);
+
+            builder.Property(t => t.Matricula).
+                HasMaxLength(8).
+                IsRequired(true);
 
             builder.Property(t => t.Matricula).
                             HasMaxLength(8).
@@ -30,7 +32,8 @@ namespace Pessoal.Infra.Data.Configuration
                 .HasDatabaseName("idx_Colaboradores_Matricula")
                 .IsUnique();
 
-            builder.Property(t => t.Ativo).HasDefaultValueSql(Boolean.TrueString);
+            builder.Property(t => t.Ativo).
+                    HasDefaultValueSql(Boolean.TrueString);
 
         }
     }

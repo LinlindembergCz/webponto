@@ -25,8 +25,10 @@ namespace PontoEletronico.Infra.Data.Repositories
         public async Task<ICollection<Ponto>> FindAllAsync() =>
            await _context.Ponto.AsNoTracking().ToListAsync();
 
-        public async Task<ICollection<PontosColaboradorResponse>> ListPontosColaborador(string matricula)
+        public async Task<ICollection<PontosColaboradorResponse>> ListPontosColaborador(Guid colaboradorid)
         {
+            var Id = colaboradorid.ToString();          
+
             var con = _context.Database.GetDbConnection();
             con.Open();
             var cmd = con.CreateCommand();
@@ -35,18 +37,21 @@ namespace PontoEletronico.Infra.Data.Repositories
             " FORMAT(DataHora, 'yyyy-MM-dd') Dia," +
             " cast( ( datediff(second," +
             " FORMAT( (Select DataHora from apontamentos ap1 where " +
-            "          ap1.turno = 1 and indicador = 'E' and colaboradorId = ap.colaboradorId), 'HH:mm'), " +
+            "         ap1.turno = 1 and indicador = 'E' and colaboradorId = ap.colaboradorId), 'HH:mm'), " +
             " FORMAT( (Select DataHora from apontamentos ap1 where " +
             "         ap1.turno  = 1 and indicador = 'S' and colaboradorId = ap.colaboradorId), 'HH:mm') )/3600.0 ) as decimal (3,2)) + " +
             " cast( ( datediff(second, " +
             " FORMAT( (Select DataHora from apontamentos ap1 where " +
             "         ap1.turno = 2 and indicador = 'E' and colaboradorId = ap.colaboradorId), 'HH:mm'), " +
             " FORMAT( (Select DataHora from apontamentos ap1 where " +
-            "         ap1.turno = 2 and indicador = 'S' and colaboradorId = ap.colaboradorId), 'HH:mm') )/3600.0 ) as decimal (3,2))" +
-            //...
-            //atualmente o sistema só contabiliza dois turnos. 
-            //Para mais turnos bastaria adicionar mais um turno a consulta.            
-            " from apontamentos ap";
+            "         ap1.turno = 2 and indicador = 'S' and colaboradorId = ap.colaboradorId), 'HH:mm') )/3600.0 ) as decimal (3,2)) + " +
+            " cast( ( datediff(second, " +
+            " FORMAT( (Select DataHora from apontamentos ap1 where " +
+            "         ap1.turno = 3 and indicador = 'E' and colaboradorId = ap.colaboradorId), 'HH:mm'), " +
+            " FORMAT( (Select DataHora from apontamentos ap1 where " +
+            "         ap1.turno = 3 and indicador = 'S' and colaboradorId = ap.colaboradorId), 'HH:mm') )/3600.0 ) as decimal (3,2))  " +
+    
+            $" from apontamentos ap where ColaboradorId = {Id}";
 
             DbDataReader rdr = await cmd.ExecuteReaderAsync(CommandBehavior.SequentialAccess);        
             

@@ -11,7 +11,7 @@ namespace PontoEletronico.Domain.Aggregates.PontoAggregate.Interfaces
         Task<ICollection<Ponto>> FindAllAsync();
         void Create(Ponto entity);
         Ponto FindLastPontoOfDay(Guid colaboradorId);
-        Task<ICollection<PontosColaboradorResponse>> ListPontosColaborador(string matricula);
+        Task<ICollection<PontosColaboradorResponse>> ListPontosColaborador(Guid colaboradorid);
         
 
     }

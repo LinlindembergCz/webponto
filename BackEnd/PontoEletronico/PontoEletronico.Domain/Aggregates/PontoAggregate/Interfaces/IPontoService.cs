@@ -13,7 +13,7 @@ namespace PontoEletronico.Domain.Aggregates.PontoAggregate.Interfaces
 
         void CreateSaida(Ponto entity);
 
-        Task<List<PontosColaboradorResponse>> ListPontosColaborador(string matricula);
+        Task<List<PontosColaboradorResponse>> ListPontosColaborador(Guid colaboradorid);
         
     }
 }

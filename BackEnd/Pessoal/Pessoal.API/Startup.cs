@@ -27,20 +27,23 @@ namespace Pessoal.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // services.AddMvc();
-            services.AddControllers();
+            
+            services.AddControllers();                                                      
 
             services.AddScoped<PessoalContext>();
             services.AddDbContext<PessoalContext>(options =>
-            {               
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-                    b => b.MigrationsAssembly("WebPonto.Infra.Data.Configuration")                          
+                    b => b.MigrationsAssembly("Pessoal.Infra.Data.Configuration")
                           .MaxBatchSize(100)//qtd maxima enviada por lote, 100 registros.
                           .CommandTimeout(5)//5 segundos time-out
-                          .EnableRetryOnFailure(3, TimeSpan.FromSeconds(10), null)//3 tentativas, aguarda 5 segundos para proxima tentativa
-                    )
-                    .LogTo(_writer.WriteLine, LogLevel.Trace);
-            }, ServiceLifetime.Scoped);
+                          .EnableRetryOnFailure(3, TimeSpan.FromSeconds(10), null)
+                    //3 tentativas, aguarda 5 segundos para proxima tentativa
+                    );
+                    //.LogTo(_writer.WriteLine, LogLevel.Trace); 
+        }, ServiceLifetime.Scoped
+            );
 
             NativeInjector.Setup(services);
             services.AddAutoMapper();

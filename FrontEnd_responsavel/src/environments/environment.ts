@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  BaseURL:'http://localhost:5000/pessoal/'
+  BaseColaboradorURL : 'http://localhost:5000/',
+  BaseApontamentoURL : 'http://localhost:5001/'
 };
 
 /*

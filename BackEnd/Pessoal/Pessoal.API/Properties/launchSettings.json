@@ -17,18 +17,9 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Docker": {
-      "commandName": "Docker",
-      "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/colaborador",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "publishAllPorts": true
-    },
+    
     "WebPonto.API": {
       "commandName": "Project",
-      "launchBrowser": true,
       "launchUrl": "colaborador",
       "applicationUrl": "http://localhost:5000"
     },
