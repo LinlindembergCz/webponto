@@ -32,7 +32,7 @@ namespace PontoEletronico.Infra.Data.Repositories
             var con = _context.Database.GetDbConnection();
             con.Open();
             var cmd = con.CreateCommand();
-            cmd.CommandText = $" select  distinct " +
+            cmd.CommandText = " select  distinct " +
             " Nome,  " +
             " FORMAT(DataHora, 'yyyy-MM-dd') Dia," +
             " cast( ( datediff(second," +
