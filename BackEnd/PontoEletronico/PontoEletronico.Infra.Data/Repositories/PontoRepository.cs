@@ -32,24 +32,24 @@ namespace PontoEletronico.Infra.Data.Repositories
             var con = _context.Database.GetDbConnection();
             con.Open();
             var cmd = con.CreateCommand();
-            cmd.CommandText = " select  distinct " +
-            " Nome,  " +
-            " FORMAT(DataHora, 'yyyy-MM-dd') Dia," +
-            " cast( ( datediff(second," +
-            " FORMAT( (Select DataHora from apontamentos ap1 where " +
-            "         ap1.turno = 1 and indicador = 'E' and colaboradorId = ap.colaboradorId), 'HH:mm'), " +
-            " FORMAT( (Select DataHora from apontamentos ap1 where " +
-            "         ap1.turno  = 1 and indicador = 'S' and colaboradorId = ap.colaboradorId), 'HH:mm') )/3600.0 ) as decimal (3,2)) + " +
-            " cast( ( datediff(second, " +
-            " FORMAT( (Select DataHora from apontamentos ap1 where " +
-            "         ap1.turno = 2 and indicador = 'E' and colaboradorId = ap.colaboradorId), 'HH:mm'), " +
-            " FORMAT( (Select DataHora from apontamentos ap1 where " +
-            "         ap1.turno = 2 and indicador = 'S' and colaboradorId = ap.colaboradorId), 'HH:mm') )/3600.0 ) as decimal (3,2)) + " +
-            " cast( ( datediff(second, " +
-            " FORMAT( (Select DataHora from apontamentos ap1 where " +
-            "         ap1.turno = 3 and indicador = 'E' and colaboradorId = ap.colaboradorId), 'HH:mm'), " +
-            " FORMAT( (Select DataHora from apontamentos ap1 where " +
-            "         ap1.turno = 3 and indicador = 'S' and colaboradorId = ap.colaboradorId), 'HH:mm') )/3600.0 ) as decimal (3,2)) As Horas  " +
+            cmd.CommandText = @" select  distinct
+             Nome,  
+              FORMAT(DataHora, 'yyyy-MM-dd') Dia,
+             cast( ( datediff(second,
+             FORMAT( (Select DataHora from apontamentos ap1 where 
+                     ap1.turno = 1 and indicador = 'E' and colaboradorId = ap.colaboradorId), 'HH:mm'), 
+             FORMAT( (Select DataHora from apontamentos ap1 where 
+                     ap1.turno  = 1 and indicador = 'S' and colaboradorId = ap.colaboradorId), 'HH:mm') )/3600.0 ) as decimal (3,2)) + 
+             cast( ( datediff(second, 
+             FORMAT( (Select DataHora from apontamentos ap1 where 
+                     ap1.turno = 2 and indicador = 'E' and colaboradorId = ap.colaboradorId), 'HH:mm'), 
+             FORMAT( (Select DataHora from apontamentos ap1 where 
+                     ap1.turno = 2 and indicador = 'S' and colaboradorId = ap.colaboradorId), 'HH:mm') )/3600.0 ) as decimal (3,2)) + 
+             cast( ( datediff(second, 
+             FORMAT( (Select DataHora from apontamentos ap1 where 
+                     ap1.turno = 3 and indicador = 'E' and colaboradorId = ap.colaboradorId), 'HH:mm'), 
+             FORMAT( (Select DataHora from apontamentos ap1 where 
+                     ap1.turno = 3 and indicador = 'S' and colaboradorId = ap.colaboradorId), 'HH:mm') )/3600.0 ) as decimal (3,2)) As Horas  " +
     
             $" from apontamentos ap where ColaboradorId = {Id}";
 
